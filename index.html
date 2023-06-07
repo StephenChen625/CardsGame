@@ -48,6 +48,7 @@
 	<div id="score">总分：0</div>
 	<button id="flip">翻牌</button>
 	<button id="end">结束游戏</button>
+  <button id="restart">重新开始</button>
 	<script type="text/javascript">
 		var score = 0;
 		var cards = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
@@ -56,7 +57,13 @@
 		var scoreDiv = document.getElementById("score");
     var cardDiv = document.getElementById("card");
     cardDiv.style = "border: 2px solid black; width: 150px; height: 200px; font-size: 96px; display: flex; justify-content: center; align-items: center;margin: 0 auto;";
-		flipBtn.onclick = function(){
+		var restartBtn = document.getElementById("restart");
+    restartBtn.onclick = function(){
+        score = 0;
+        scoreDiv.innerHTML = "总分：" + score;
+        cardDiv.innerHTML = "";
+    }
+    flipBtn.onclick = function(){
 			var card = cards[Math.floor(Math.random()*cards.length)];
 			var value = card == "A" ? 1 : (card == "J" ? 11 : (card == "Q" ? 12 : (card == "K" ? 13 : card)));
 			score += value % 3;
